@@ -1,6 +1,9 @@
+// server.js (Corrected Version)
+
 // Import the Express framework
 const express = require('express');
 const path = require('path');
+const cors = require('cors'); // <-- ADD THIS LINE
 
 // Create an instance of the Express application
 const app = express();
@@ -10,8 +13,10 @@ const PORT = 3000;
 // --- MIDDLEWARE ---
 // Allows the server to understand JSON data
 app.use(express.json());
+app.use(cors()); // <-- AND ADD THIS LINE
 // Serves the frontend files from the 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // --- IN-MEMORY "DATABASE" ---
 // A simple array to store our tasks while the server is running
